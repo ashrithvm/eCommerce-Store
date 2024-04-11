@@ -1,0 +1,1 @@
+[{"id":1,"accountId":3,"cardNumber":"1234123412341234","securityCode":123,"expirationDate":"12/23","name":"Lemonator"},{"id":2,"accountId":3,"cardNumber":"2345234523452345","securityCode":234,"expirationDate":"11/26","name":"Orangista"},{"id":3,"accountId":2,"cardNumber":"1231231231231231","securityCode":123,"expirationDate":"01/21","name":"k"}]

@@ -1,0 +1,51 @@
+/* cart.component.css */
+.container {
+  margin-top: 0;
+  max-width: 800px;
+}
+
+.info {
+  box-shadow: none;
+}
+
+mat-card {
+  min-height: 180px;
+  border-radius: 10px;
+}
+
+mat-card-content {
+  padding: 15px;
+}
+
+.price{
+  font-weight: bold;
+}
+
+mat-form-field {
+  width: 90px;
+}
+
+img[mat-card-image] {
+  width: 100%;
+  height: auto;
+  min-height: 180px;
+}
+/* cart.component.css */
+.total {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#bottom1 {
+  margin-top: 50px;
+}
+
+#bottom2 {
+  margin-top: 50px;
+}
+h1{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 3px;
+}
+

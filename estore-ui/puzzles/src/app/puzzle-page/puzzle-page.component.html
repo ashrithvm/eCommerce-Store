@@ -1,0 +1,45 @@
+<span class="top-bar">
+  <input id="search" [(ngModel)]="search"
+         [typeahead]="suggestions$"
+         [typeaheadAsync]="true"
+         (typeaheadOnSelect)="moveToDetails()"
+         (ngModelChange)="searchQuery()"
+         class="form-control"
+         placeholder="Search for Puzzle">
+
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <button class="add" mat-fab extended color="primary" routerLink="../custom-puzzle-form">
+    <mat-icon>add</mat-icon>
+    Order Custom Puzzle
+  </button>
+</span>
+<div class="puzzle-container">
+  <div *ngFor="let puzzle of puzzles" class="puzzle-card">
+    <mat-card [@fadeInOut]>
+      <mat-card-content>
+        <img id="img" ngSrc="{{puzzle.imageURL}}" fill alt="No image found">
+        <mat-card-title>{{puzzle.name}}</mat-card-title>
+        <mat-label id="price">${{puzzle.price}}</mat-label>
+        <button class="cardButton" mat-fab extended color="primary" [routerLink]="['info']" (click)="setCurrentPuzzle(puzzle)">View Details</button>
+        <button *ngIf="puzzle.quantity > 0" class="cardButton" mat-fab extended color="primary" (click)="addToCart(puzzle, template)">Add to Cart</button>
+        <p *ngIf="puzzle.quantity < 5 && puzzle.quantity > 0" style="color: red">Rush, only {{puzzle.quantity}} left!</p>
+        <p *ngIf="puzzle.quantity === 0" style="color: red">Out of stock!</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<br><br>
+<pre class="card card-block card-header">{{message}}</pre>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to keep shopping or proceed to cart?</p>
+    <button type="button" mat-button (click)="confirm()" >Keep shopping</button>
+    <button type="button" mat-raised-button color="primary" (click)="decline()" >Proceed to cart</button>
+  </div>
+</ng-template>
+
+

@@ -1,0 +1,92 @@
+
+
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <div class="checkout-wrapper" [@fadeInOut]>
+    <div class="checkout-container" *ngIf="isSavedPayment">
+      <h2>Saved Payment Info</h2>
+      <div class="payment-cards-container">
+        <div *ngFor="let paymentInfo of paymentInfos"
+             (click)="selectSavedPayment(paymentInfo)"
+             [ngClass]="{'selected': paymentInfo === selectedPaymentInfo}"
+             class="payment-card">
+          <h3>{{paymentInfo.name}}</h3>
+          <p style="color: grey">XXXX-XXXX-XXXX-{{paymentInfo.cardNumber.slice(12,16)}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkout-container">
+      <div *ngIf="!isSelectedSavedPayment">
+        <h2>Enter Your Card Details</h2>
+
+        <label for="card-number">Card Number:</label>
+        <input formControlName="creditCard" type="number" id="card-number" name="card-number" pattern="[0-9]{16}" required>
+
+        <label for="card-name">Cardholder Name:</label>
+        <input formControlName="name" type="text" id="card-name" name="card-name" required>
+
+        <label for="expiry-date">Expiry Date:</label>
+        <input formControlName="expirationDate" type="text" id="expiry-date" name="expiry-date" pattern="\d{2}/\d{2}" required>
+
+        <label for="cvv">CVV:</label>
+        <input formControlName="cvv" type="text" id="cvv" name="cvv" pattern="\d{3}" required>
+
+
+      </div>
+
+        @if (checked){
+          <h2>Enter Friend Details</h2>
+          <label for="friend-email" >Friend's Email:</label>
+          <input type="email" id="friend-email" name="friend-email" formControlName="recipientEmail" required>
+          <label for="friend-message">Message:</label>
+          <input id="friend-message" name="friend-message" formControlName="message" required>
+        }
+
+        <div class="checkboxes">
+            <mat-slide-toggle [(ngModel)]="checked" formControlName="checked">Gift to a friend </mat-slide-toggle>
+          <div *ngIf="!isSelectedSavedPayment">
+            <mat-slide-toggle [(ngModel)]="checked2" formControlName="checked2">Save Payment Info </mat-slide-toggle>
+          </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="popup" *ngIf="showPopup">
+      <div class="popup-content">
+        <div class="spinner" *ngIf="isPaymentProcessing"></div>
+        <div class="tick-mark" *ngIf="!isPaymentProcessing">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="black">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 16.2l-4.2-4.2-1.4 1.4 5.6 5.6 12-12z"/>
+          </svg>
+          <p >Payment Successful</p> <!-- Display the text below the tick mark -->
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-wrapper">
+      <!-- Summary Window -->
+      <div class="summary-window">
+        <h3>Summary</h3>
+        <p>Subtotal: ${{subtotal}}</p>
+        <p>Tax: ${{tax.toFixed(2)}}</p>
+        <p>Total: ${{ total.toFixed(2) }}</p>
+
+      </div>
+      <button mat-fab extended color="primary" type="submit" class="pay-button">
+        Pay
+        <mat-icon>payment</mat-icon>
+      </button>
+    </div>
+  </div>
+</form>
+
+
+
+
+

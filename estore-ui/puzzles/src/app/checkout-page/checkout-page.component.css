@@ -1,0 +1,225 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.checkout-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+}
+
+.payment-card {
+  border: 1px solid black;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f4f4f4;
+  transition: transform 0.3s ease; /* Smooth enlargement */
+  position: relative; /* Needed for absolute positioning of the tick mark */
+}
+
+.payment-card.selected {
+  transform: scale(1.05); /* Enlarges the card */
+  border-color: #4567c6; /* Changes the border color */
+}
+
+.payment-card.selected::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-color: #4567c6;
+}
+
+.payment-cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the cards horizontally */
+}
+
+
+.checkout-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  flex: 1 1 400px; /* Adjusts the base width and allows for flexibility */
+}
+
+
+.summary-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; /* Space between the card details container */
+}
+
+.pay-button {
+  margin: 2px auto auto;
+  border-radius: 10px;
+  width: 80%;
+  transition: ease-in-out 0.3s
+}
+
+.pay-button:hover {
+  background-color: white;
+  color: black;
+  transition: ease-in-out 0.3s;
+}
+
+.pay-button:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.summary-window {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  width: 300px; /* Specific width */
+  height: 200px; /* Specific height */
+
+}
+
+@media (max-width: 800px) {
+  .checkout-wrapper {
+    flex-direction: column;
+  }
+
+  .checkout-container, .summary-window {
+    flex: 1 1 100%; /* On smaller screens, elements take up the full width */
+    margin-bottom: 20px;
+  }
+
+  .summary-window {
+    width: 100%; /* On smaller screens, the summary window takes up the full width */
+    height: auto; /* Adjusts height automatically */
+    margin-left: 0; /* Removes space between the containers on smaller screens */
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%; /* Make inputs responsive */
+}
+
+
+/* Ensure all elements are responsive on smaller screens */
+@media (max-width: 800px) {
+  body, .checkout-wrapper, .checkout-container, .summary-window {
+    width: 100%;
+  }
+
+  input, .pay-button {
+    width: 100%;
+  }
+}
+
+/* Existing styles remain unchanged */
+
+/* Popup styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Darkened background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tick-mark {
+  font-size: 48px;
+  color: black;
+}
+
+.tick-mark p {
+  font-size: 14px; /* Make the text smaller */
+  color: black; /* Ensure the text color matches the design */
+  margin-top: 10px; /* Add some space above the text */
+}
+
+/*align to the right, right under the pay button*/
+.gift-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+mat-form-field {
+  max-height: 100px;
+}
+
+p{
+
+  margin-top: 0;
+}
+
+
+.form-group .ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.ng-invalid:not(form) {
+  border-color: red;
+}

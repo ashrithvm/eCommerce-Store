@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <mat-form-field class = "username" [hideRequiredMarker]=true>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            @if (loginFormControl.hasError('required')) {
+              <mat-error>Username is <strong>required</strong>.</mat-error>
+            }
+          </mat-form-field>
+          <mat-error *ngIf="accountNotFound">Username not found</mat-error>
+          <div class = "button">
+              <button type = "submit" mat-flat-button>Login</button>
+          </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+

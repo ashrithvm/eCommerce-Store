@@ -1,0 +1,65 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="currentPuzzle || isCreateForm()">
+
+  <mat-list [@fadeInOut]>
+    <mat-list-item>
+    <h2 *ngIf="isCreateForm()">Add a new Puzzle Product</h2>
+    <h2 *ngIf="!isCreateForm()">Update Existing Puzzle Product</h2>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-form-field>
+          <mat-label>Quantity</mat-label>
+          <input matInput min="1" type="number" formControlName="quantity">
+          <mat-hint align="start">Must be 1 or higher.</mat-hint>
+        </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input type="text" matInput formControlName="description">
+        </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item>
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input matInput type="number" formControlName="price">
+          <span matTextPrefix>$&nbsp;</span>
+        </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-form-field>
+          <mat-label>Difficulty</mat-label>
+          <mat-select formControlName="difficulty">
+            <mat-option value="EASY">Easy</mat-option>
+            <mat-option value="MEDIUM">Medium</mat-option>
+            <mat-option value="HARD">Hard</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-form-field>
+          <mat-label>Image URL</mat-label>
+          <input matInput formControlName="imageURL">
+          <mat-hint align="start">The URL can either be a local path or from the web</mat-hint>
+        </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+        <button class="btn" mat-fab extended color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>{{isCreateForm() ? 'add' : 'edit'}}</mat-icon>
+          {{isCreateForm() ? 'Add' : 'Update'}}
+        </button>
+    </mat-list-item>
+  </mat-list>
+
+
+</form>
+
+<h1 *ngIf="!currentPuzzle && !isCreateForm()" style="color: red"> Puzzle does not exist. Go back and use the interface to edit puzzles.</h1>
+

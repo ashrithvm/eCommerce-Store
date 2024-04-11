@@ -1,0 +1,121 @@
+table{
+  width: 100%;
+}
+tr{
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+
+}
+
+td{
+  width: 20%; /* Adjust as needed to leave some space between items */
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  align-content: center;
+}
+td:hover{
+  transform: scale(1.05);
+}
+mat-card{
+  margin: 15px;
+  padding: 15px;
+  width: 100%;
+
+}
+
+p {
+  margin: 5px;
+}
+#img{
+  opacity: 0.2;
+}
+
+h2{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 18px;
+}
+
+#price{
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+
+}
+#logout{
+  color: #4567c6;
+}
+#addButton{
+  background-color: #4567c6;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+
+  margin: 10px
+
+}
+.productBtn{
+
+  margin: 5px;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: black 1px;
+}
+#login{
+  color: blue;
+  text-decoration: underline;
+  font-style: normal;
+  display: inline-block;
+
+}
+
+#login:hover{
+  animation: fadeIn 0.5s;
+  animation-fill-mode: forwards;
+  color: purple;
+}
+
+.accountInfo{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
+}
+
+.no-stock {
+  background-color: rgba(255, 2, 2, 0.15);
+}
+
+.no-stock #quantity{
+  color: red;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.no-stock button{
+  background-color: #b90909;
+}
+
+@keyframes fadeIn {
+  0% {color: blue;}
+  100% {color: purple;}
+}
+
+.inventory-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust 250px to your desired minimum width */
+  grid-gap: 10px;
+}
+
+.inventory-card {
+  display: flex;
+  justify-content: center;
+}

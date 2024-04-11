@@ -1,0 +1,7 @@
+<div class="accountInfo">
+  <div class="greeting">
+    <h2 *ngIf="isUserLoggedIn()">{{loggedInUsername}} <button mat-button color="accent" (click)="logout()" >logout</button></h2>
+    <h2 *ngIf="!isUserLoggedIn()">Welcome Guest <a href="login"><button mat-button color="accent">login</button></a></h2>
+  </div>
+
+  </div>

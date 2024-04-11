@@ -1,0 +1,24 @@
+<h2>Inventory: {{inventorySize}} products
+  <button id="addButton" mat-mini-fab routerLink="../puzzle-create-form">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-slide-toggle [(ngModel)]="filterState" (ngModelChange)="filterPuzzles()" style="margin-left:65%">Only Low In Stock</mat-slide-toggle>
+</h2>
+<h2>Low Stock: {{lowStockPuzzles?.length}} Products</h2>
+<div class="inventory-container">
+  <div *ngFor="let puzzle of puzzles" class="inventory-card">
+    <mat-card [ngClass]="{'no-stock': puzzle.quantity == 0}" [@fadeInOut]>
+      <mat-card-content>
+        <div id="img">
+          <img ngSrc="{{puzzle.imageURL}}" alt="{{puzzle.name}}" fill priority>
+        </div>
+        <mat-card-title>{{puzzle.name}}</mat-card-title>
+        <mat-label id="price">${{puzzle.price}}</mat-label><br>
+        <mat-label id="quantity">{{puzzle.quantity != 0 ? "Quantity: " + puzzle.quantity : "OUT OF STOCK"}}</mat-label>
+        <button class="productBtn" id="viewButton" mat-fab extended color="primary" (click)="setCurrentPuzzle(puzzle)" routerLink="../puzzles/details">Detailed View</button>
+        <button class="productBtn" id="editButton" mat-fab extended color="primary" routerLink="../puzzle-edit-form/{{puzzle.id}}">Edit</button>
+        <button class="productBtn" id="deleteButton" mat-fab extended color="primary" (click)="deletePuzzle(puzzle.id)">Delete</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

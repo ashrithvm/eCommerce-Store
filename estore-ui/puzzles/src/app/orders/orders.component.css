@@ -1,0 +1,39 @@
+/* styles.scss */
+.admin-orders {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-card {
+  margin-bottom: 20px;
+}
+
+
+.order-card mat-card-content {
+  font-size: 14px;
+}
+
+.order-card mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+table{
+  width: 80%;
+  margin: 1em auto;
+  text-align: center;
+}
+tr{
+  margin: 1em;
+}
+td{
+  font-size: large;
+}
+.titles{
+  font-weight: bold;
+}
+
+li {
+  list-style-type: none;
+}

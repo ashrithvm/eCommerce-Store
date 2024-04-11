@@ -1,0 +1,5 @@
+<a mat-list-item href="/puzzles">Catalogue</a>
+<a *ngIf="!isLoggedInAdminUser()" mat-list-item href="/cart">Cart</a>
+<a *ngIf="isLoggedInAdminUser()" mat-list-item href="/orders">Orders</a>
+<a *ngIf="!isLoggedInAdminUser()" mat-list-item href="/my-puzzle">My Puzzles</a>
+<a *ngIf="!isLoggedInAdminUser()" mat-list-item href="/order-history">Order History</a>

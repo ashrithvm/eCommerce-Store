@@ -1,0 +1,23 @@
+.bg {
+  width: .2em;
+  height: 10em;
+}
+
+img {
+  opacity: 0.15;
+}
+
+.details{
+  width: 100%;
+  padding: 80px 15px 80px 15px;
+}
+
+.numbers{
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+}
+
+

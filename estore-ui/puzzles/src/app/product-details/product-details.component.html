@@ -1,0 +1,22 @@
+<!-- puzzle-detail.component.html -->
+<div class="puzzle-container">
+  <mat-card class="puzzle-card" [@fadeInOut]>
+    <div class="puzzle-image">
+      <img src ="{{puzzle?.imageURL}}" alt="{{ puzzle?.name }}">
+    </div>
+    <div class="puzzle-info">
+      <h2>{{ puzzle?.name }}</h2>
+      <h5>{{ puzzle?.difficulty | titlecase }}</h5>
+      <p>{{ puzzle?.description }}</p>
+      <div class="puzzle-meta">
+        <span class="price">{{ puzzle?.price | currency }}</span>
+        <span *ngIf="puzzle!!.quantity > 0" class="quantity">Available: {{ puzzle?.quantity }}</span>
+        <span *ngIf="puzzle!!.quantity === 0" class="quantity" style="color: red">Out of Stock</span>
+      </div>
+      <button *ngIf="!isLoggedInAdminUser() && puzzle!!.quantity > 0" class="button" mat-fab extended color="primary" (click)="addToCart(puzzle!!)">
+        <mat-icon>add_shopping_cart</mat-icon>
+        Add to Cart
+      </button>
+    </div>
+  </mat-card>
+</div>

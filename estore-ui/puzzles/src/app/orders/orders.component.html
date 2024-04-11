@@ -1,0 +1,45 @@
+
+<!--Information Table-->
+<mat-tab-group>
+  <mat-tab label="Summary" >
+    <table>
+      <tr class="titles">
+        <td>Total Orders</td>
+        <td>Total Revenue</td>
+        <td>Best Selling Puzzle</td>
+        <td>Best Customer</td>
+      </tr>
+      <tr class="data">
+        <td>{{ orders?.length }}</td>
+        <td>${{ totalRevenue }}</td>
+        <td>{{ bestSellingPuzzle }}</td>
+        <td>{{ bestCustomer}}</td>
+    </table>
+  </mat-tab>
+
+  <mat-tab label="Orders">
+  <div class="admin-orders">
+    <div class="order-list">
+      <mat-card *ngFor="let order of orders" class="order-card">
+        <mat-card-header>
+          <mat-card-title>{{ order.buyer.username }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let order of order.customPuzzles">
+              {{ order.name }} Puzzle(Custom), ${{order.price}} x {{ order.quantity }}
+            </li>
+            <li *ngFor="let item of order.items">
+              {{ item.puzzle.name }} Puzzle, ${{item.puzzle.price}} x {{ item.quantity }}
+            </li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <p>Total: ${{ order.total }}</p>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+    </mat-tab>
+</mat-tab-group>
+

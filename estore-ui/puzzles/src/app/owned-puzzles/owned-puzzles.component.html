@@ -1,0 +1,49 @@
+<h1>Purchased Puzzles:{{totalPurchaseAmount}}</h1>
+<div id="big-cont" class="container my-5" *ngIf="!isEmpty()" [@fadeInOut]>
+
+  <div  class="row mb-3" *ngFor="let item of customPuzzles">
+    <div class="col-md-4">
+      <mat-card class="info">
+        <img mat-card-image [src]="item.imageURL" alt="{{item.name}}">
+      </mat-card>
+    </div>
+    <div class="col-md-8">
+      <mat-card class="info">
+        <mat-card-content>
+          <h2>{{item.name}}(Custom)</h2>
+          <p class="text-muted">Designed by you our dear friend</p>
+          <div id="bottom1" class="d-flex justify-content-between align-items-center">
+            <span class="price">{{item.price | currency}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div  class="row mb-3" *ngFor="let item of orderPuzzles">
+    <div class="col-md-4">
+      <mat-card class="info">
+        <img mat-card-image [src]="item.imageURL" alt="{{item.name}}">
+      </mat-card>
+    </div>
+    <div class="col-md-8">
+      <mat-card class="info">
+        <mat-card-content>
+          <h2>{{item.name}}</h2>
+          <p class="text-muted">{{item.description}}</p>
+          <div id="bottom2" class="d-flex justify-content-between align-items-center">
+            <span class="price">{{item.price | currency}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5" *ngIf="isEmpty()">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Your own nothing</h2>
+      <p>Go back to the <a routerLink="/puzzles">shop</a> and buy something</p>
+    </div>
+  </div>
+</div>
