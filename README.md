@@ -1,10 +1,5 @@
 # PROJECT Design Documentation
 
-> _The following template provides the headings for your Design
-> Documentation.  As you edit each section make sure you remove these
-> commentary 'blockquotes'; the lines that start with a > character
-> and appear in the generated PDF in italics but do so only **after** all team members agree that the requirements for that section and current Sprint have been met. **Do not** delete future Sprint expectations._
-
 ## Team Information
 * Team name: Good Vibes
 * Team members
@@ -123,11 +118,7 @@ The system will save all data to files, ensuring that changes made by one user (
 
 This section describes the application domain.
 
-![Domain Model](DomainAnalysisTeam1.png)
-
-> _**[Sprint 2 & 4]** Provide a high-level overview of the domain for this application. You
-> can discuss the more important domain entities and their relationship
-> to each other._
+![Domain Model](./docs/DomainAnalysisTeam1.png)
 
 **Authentication**:
 We implemented minimal authentication by just requiring the user to provide the username when logging in. The username is checked for existence and if true, the user is logged in.
@@ -165,7 +156,7 @@ This section describes the application architecture.
 ### Summary
 
 
-![The Tiers & Layers of the Architecture](TiersLayers.png)
+![The Tiers & Layers of the Architecture](./docs/TiersLayers.png)
 
 The web application, is built using the Model–View–ViewModel (MVVM) architecture pattern. 
 
@@ -198,23 +189,6 @@ Our Puzzles E-Store application provides a user-friendly interface that allows c
 
 **9. Gift Options:** This feature allows users to choose to gift the puzzles to someone else. They can write a gift message and the email of the gift recipient. The product gets emailed to the recipient with the message.
 
-### View Tier
-> _**[Sprint 4]** Provide a summary of the View Tier UI of your architecture.
-> Describe the types of components in the tier and describe their
-> responsibilities.  This should be a narrative description, i.e. it has
-> a flow or "story line" that the reader can follow._
-
-> _**[Sprint 4]** You must  provide at least **2 sequence diagrams** as is relevant to a particular aspects 
-> of the design that you are describing.  (**For example**, in a shopping experience application you might create a 
-> sequence diagram of a customer searching for an item and adding to their cart.)
-> As these can span multiple tiers, be sure to include an relevant HTTP requests from the client-side to the server-side 
-> to help illustrate the end-to-end flow._
-
-> _**[Sprint 4]** To adequately show your system, you will need to present the **class diagrams** where relevant in your design. Some additional tips:_
- >* _Class diagrams only apply to the **ViewModel** and **Model** Tier_
->* _A single class diagram of the entire system will not be effective. You may start with one, but will be need to break it down into smaller sections to account for requirements of each of the Tier static models below._
- >* _Correct labeling of relationships with proper notation for the relationship type, multiplicities, and navigation information will be important._
- >* _Include other details such as attributes and method signatures that you think are needed to support the level of detail in your discussion._
 
 ### ViewModel Tier
 > * AccountController
@@ -230,17 +204,9 @@ Our Puzzles E-Store application provides a user-friendly interface that allows c
 > /account url, the controller interprets it and 
 > delegates the task to the persistence layer.
 
-> _**[Sprint 4]** Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
-
-> _At appropriate places as part of this narrative provide **one** or more updated and **properly labeled**
-> static models (UML class diagrams) with some details such as critical attributes and methods._
-> 
-![Replace with your ViewModel Tier class diagram 1, etc.](model-placeholder.png)
 
 ### Model Tier
-![ModelDiagram](ModelDiagram.jpg)
+![ModelDiagram](./docs/ModelDiagram.jpg)
 
 Every class in the model has one common thing, the id. That is why every class that was used to model inherits from it.
 The classes that inherit from ModelTemplate are:
@@ -251,7 +217,7 @@ The classes that inherit from ModelTemplate are:
 `PuzzleCartItem` is used inside the cart, to store the product together with the quantity in the cart. 
 
 #### Persistence
-![Persistence Diagram](PersistenceDiagram.jpg)
+![Persistence Diagram](./docs/PersistenceDiagram.jpg)
 Now we can explain why ModelTemplate is needed.
 It was needed to create a `BasicDao`, an interface that supports all the basic CRUD operations. Basic Dao has a generic type, but the only condition is that the type must extend `ModelTemplate`. `BasicFileDao` implements it and provides all the basic operations for file based persistence, utilizing the FileStorage class. The following interfaces extend ``BasicDao<T extends ModelTemplate>``:
 * `PuzzleDAO<Puzzle>`
@@ -280,14 +246,7 @@ We ensured that each class in our project has a well-defined role and responsibi
    We created specific DAO interfaces for each entity to adhere to this principle. For example, we created a PuzzleDao interface specifically for the Puzzle entity. This ensures that classes implementing PuzzleDao are not forced to depend on methods they do not use.
 #### 5. Dependency Inversion Principle (DIP):
    We used Spring Framework's dependency injection in our controllers to adhere to this principle. For example, in our PuzzleController, the PuzzleDao is injected via the constructor. This ensures that PuzzleController is not directly dependent on the low-level PuzzleFileDao implementation. Instead, it depends on the abstraction (PuzzleDao).
-
-## Static Code Analysis/Future Design Improvements
-> _**[Sprint 4]** With the results from the Static Code Analysis exercise, 
-> **Identify 3-4** areas within your code that have been flagged by the Static Code 
-> Analysis Tool (SonarQube) and provide your analysis and recommendations.  
-> Include any relevant screenshot(s) with each area._
-
-> _**[Sprint 4]** Discuss **future** refactoring and other design improvements your team would explore if the team had additional time._
+   
 
 ## Testing
 We have written 168 JUnit tests(backend only) and all of them pass. Tests span across all tiers and cover about 90 percent of all testable code.
@@ -299,10 +258,7 @@ We have written 168 JUnit tests(backend only) and all of them pass. Tests span a
 The strategy we used to approach testing was to make sure that for every method we would test as many branches as we could in a single test. Testing the normal cases, the failing cases, any errors and how it responds. We repeatedly ran coverage tests and examined the methods we were testing to make sure that the potential outcomes were all accounted for and tested, ones that could be JUnit tested. We aimed for 90%+ in coverage as it seems to be the standard for good coverage, which we obtained after maticulous branch and method testing and use of many Mockito elements for all the back-end dependancies required for each tier and all the objects enclosed to make the database work.  
 
 #### Coverage Report
-![Coverage Report](../etc/CoverageReport/CoverageReport.png)
-
-## Ongoing Rationale
->_**[Sprint 1, 2, 3 & 4]** Throughout the project, provide a time stamp **(yyyy/mm/dd): Sprint # and description** of any _**mayor**_ team decisions or design milestones/changes and corresponding justification._
+![Coverage Report](./etc/CoverageReport/CoverageReport.png)
 
 
 # Links
